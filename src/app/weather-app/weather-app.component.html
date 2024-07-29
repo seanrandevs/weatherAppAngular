@@ -6,23 +6,23 @@
     type="text" />
     <div class="date"></div>
     <div class="time"></div>
-    <div class="location" data-testid="location" ></div>
-    <div class="temp">
+    <div class="location" data-testid="location" >{{ data.name }}</div>
+    <div class="temp">{{data.main.temp}}
     °F</div>
-    <div class="condition">
+    <div class="condition">{{ data.weather[0].description }}
     </div>
     </div>
     <div class="bottom-data">
       <div class="feels">
-        <p class="bold">°</p>
+        <p class="bold">{{ data.main.feels_like }}°</p>
         <p>Feels Like</p>
       </div>
       <div class="humidity">
-        <p class="bold">%</p>
+        <p class="bold">{{ data.main.humidity }}%</p>
         <p>Humidity</p>
       </div>
       <div class="wind">
-        <p class="bold">MPH</p>
+        <p class="bold"> {{data.wind.speed}} MPH</p>
         <p>Wind Speed</p>
       </div>
     </div>
