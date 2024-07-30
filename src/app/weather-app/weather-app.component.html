@@ -1,31 +1,30 @@
 <div class="container">
     <div class="data">
     <input
-    placeholder="Enter Location"
     class="InputData"
     type="text" 
-    value="location"
+    placeholder="Enter location"
+    value={{location}}
     (change)="onLocationChange($event)" 
-    (keydown)="fetchDetails()"
+    (keyup.enter)="fetchDetails()"
     />
-    <div class="date"></div>
-    <div class="time"></div>
+    <div class="date">{{ currDate }}</div>
+    <div class="time">{{ currTime }}</div>
     <div class="location" data-testid="location" >{{ data.name }}</div>
-    <div class="temp">{{data.main.temp}}
-    °F</div>
-    <div class="condition">{{ data.weather[0].description }}
+    <div *ngIf="data.main" class="temp">{{data.main.temp}}°F</div>
+    <div *ngIf="data.weather" class="condition">{{ data.weather[0].description }}
     </div>
     </div>
     <div class="bottom-data">
-      <div class="feels">
+      <div *ngIf="data.main" class="feels">
         <p class="bold">{{ data.main.feels_like }}°</p>
         <p>Feels Like</p>
       </div>
-      <div class="humidity">
+      <div *ngIf="data.main" class="humidity">
         <p class="bold">{{ data.main.humidity }}%</p>
         <p>Humidity</p>
       </div>
-      <div class="wind">
+      <div *ngIf="data.wind" class="wind">
         <p class="bold"> {{data.wind.speed}} MPH</p>
         <p>Wind Speed</p>
       </div>

@@ -35,21 +35,13 @@
     background: rgba(255,255,255,0.1);
    }
 
-   .date, .location {
+   .date, .location, .time, .temp, .condition {
     font-size: 2.3rem;
-    padding-bottom: 5px;
+    padding-bottom: 1.7rem;
    }
-
-   .time {
-    padding-bottom: 10px;
-   }
-
-   .time, .temp, .condition {
-    font-size: 3rem;
-  }
 
   .temp, .condition {
-    margin-top: 50px;
+    margin-top: 2rem;
     text-align: center;
   }
 
