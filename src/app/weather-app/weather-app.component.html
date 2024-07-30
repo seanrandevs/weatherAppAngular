@@ -3,7 +3,11 @@
     <input
     placeholder="Enter Location"
     class="InputData"
-    type="text" />
+    type="text" 
+    value="location"
+    (change)="onLocationChange($event)" 
+    (keydown)="fetchDetails()"
+    />
     <div class="date"></div>
     <div class="time"></div>
     <div class="location" data-testid="location" >{{ data.name }}</div>

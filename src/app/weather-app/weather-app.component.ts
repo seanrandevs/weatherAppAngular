@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class WeatherAppComponent implements OnInit  {
   public data:any;
+  location: string = '';
   
   constructor(private http: HttpClient) {
 
@@ -20,14 +21,24 @@ export class WeatherAppComponent implements OnInit  {
     this.fetchDetails();
   }
 
-  public fetchDetails() {
-    this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=
-    dallas&units=imperial&appid=c412fb8f1ed42194a962dd8b85f34c0c`).subscribe(
-      (resp:any) => {
-        console.log(resp);
-        this.data = resp;
-      }
-    )
+  onLocationChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.location = inputElement.value;
+    console.log(this.location); // To see the updated value
+  }
+
+
+  public fetchDetails(event?: KeyboardEvent): void {
+    if (!event ||event.key === 'Enter') {
+      this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=
+        ${this.location}&units=imperial&appid=c412fb8f1ed42194a962dd8b85f34c0c`).subscribe(
+          (resp:any) => {
+            console.log(resp);
+            this.data = resp;
+          })
+          this.location = '';
+    }
+
   }
 }
 
